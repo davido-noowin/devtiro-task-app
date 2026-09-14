@@ -5,9 +5,12 @@ import com.devtiro.task.domain.entity.Task;
 import com.devtiro.task.domain.entity.TaskStatus;
 import com.devtiro.task.repository.TaskRepository;
 import com.devtiro.task.service.TaskService;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.List;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -34,5 +37,10 @@ public class TaskServiceImpl implements TaskService {
         );
 
         return taskRepository.save(task);
+    }
+
+    @Override
+    public List<Task> listTasks() {
+        return taskRepository.findAll(Sort.by(Direction.ASC, "created"));
     }
 }
