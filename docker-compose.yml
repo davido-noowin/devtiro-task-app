@@ -4,6 +4,7 @@ services:
   # The UI service.
   ui:
     # Build the UI image from the source in the frontend directory.
+    image: ghcr.io/devtiro/devtiro-build-task-app:latest
     build: ./frontend
     ports:
       # Make the UI available on http://localhost:3000
